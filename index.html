@@ -1,134 +1,244 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GTPSY - Growtopia Private Server</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #141E30, #243B55);
-            color: white;
-            text-align: center;
-            margin: 0;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            background: #1a1a2e;
-            padding: 15px;
-        }
-        .navbar ul {
-            list-style: none;
-            display: flex;
-            gap: 15px;
-        }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 12px;
-            transition: 0.3s;
-        }
-        .navbar a:hover {
-            background: #16213E;
-            border-radius: 5px;
-        }
-        .hero {
-            padding: 50px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            display: inline-block;
-            margin-top: 50px;
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #E94560;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-        .btn:hover {
-            background: #F55A70;
-        }
-        .form-container {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px;
-            margin: auto;
-            margin-top: 50px;
-        }
-        input, button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-        }
-        input {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-        }
-        button {
-            background: #E94560;
-            color: white;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        button:hover {
-            background: #F55A70;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GTPSY - Growtopia Private Server</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #141E30, #243B55);
+      color: white;
+      text-align: center;
+      margin: 0;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      background: #1a1a2e;
+      padding: 15px;
+    }
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      transition: 0.3s;
+    }
+    .navbar a:hover {
+      background: #16213E;
+      border-radius: 5px;
+    }
+    .hero {
+      padding: 50px;
+    }
+    .btn {
+      padding: 10px 20px;
+      background: #E94560;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .form-container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      margin: 30px auto;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+    input {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+    button {
+      background: #E94560;
+      color: white;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+      
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <h1 class="logo">GTPSY</h1>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#leaderboard">Leaderboard</a></li>
-            <li><a href="#download">Download</a></li>
-            <li><a href="#shop">Shop</a></li>
-            <li><a href="#forum">Forum</a></li>
-            <li><a href="#support">Support</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#login">Login</a></li>
-            <li><a href="#register">Register</a></li>
-        </ul>
-    </nav><section id="home" class="hero">
-    <h2>Welcome to <span>GTPSY</span></h2>
-    <p>Join the best Growtopia Private Server now!</p>
-    <a href="https://kua.lat/GtpsY" class="btn">Join GTPSY</a>
+
+  <nav class="navbar">
+    <h1 class="logo">GTPSY</h1>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#" id="loginLink">Login</a></li>
+      <li><a href="#" id="registerLink">Register</a></li>
+      <li><a href="#" id="logoutLink" class="hidden">Logout</a></li>
+    </ul>
+  </nav>
+
+  <section id="home" class="hero">
+  <h2>Welcome to <span>GTPSY</span></h2>
+  <p>GTPSY adalah server private Growtopia terbaik yang dibuat untuk komunitas Growtopian Indonesia.</p>
+  <p>Fitur-fitur menarik, event rutin, item eksklusif, dan gameplay anti bosan!</p>
+  <p>Owner: Kizkazi | Admin: Clewel & Reza</p>
+  <a href="https://kua.lat/GtpsY" class="btn">Join GTPSY</a>
 </section>
 
-<section id="login" class="form-container">
+  <section id="login" class="form-container hidden">
     <h2>Login</h2>
-    <form>
-        <input type="email" placeholder="Email" required>
-        <input type="password" placeholder="Password" required>
-        <button type="submit">Login</button>
+    <form id="loginForm">
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Login</button>
     </form>
-</section>
+  </section>
 
-<section id="register" class="form-container">
+  <section id="register" class="form-container hidden">
     <h2>Register</h2>
-    <form>
-        <input type="email" placeholder="Email" required>
-        <input type="text" placeholder="Username" required>
-        <input type="password" placeholder="Password" required>
-        <input type="password" placeholder="Confirm Password" required>
-        <button type="submit">Register</button>
+    <form id="registerForm">
+      <input type="email" id="regEmail" placeholder="Email" required />
+      <input type="text" id="regUsername" placeholder="Username" required />
+      <input type="password" id="regPassword" placeholder="Password" required />
+      <input type="password" id="regConfirmPassword" placeholder="Confirm Password" required />
+      <button type="submit">Register</button>
     </form>
+  </section>
+  
+<section id="store" class="form-container hidden">
+    <h2>GTPSY Store</h2>
+    <div class="product-card">
+        <img src="https://i.imgur.com/O3G7P7f.png" alt="GrowSoul" class="product-img">
+        <h3>GrowSoul Source Code</h3>
+        <p>Mendapatkan CPP Full dengan Core Beserta Source</p>
+        <p><strong>Harga:</strong> 100k</p>
+        <div class="button-group">
+            <button class="buy-btn">Buy</button>
+            <button class="see-btn">See</button>
+        </div>
+    </div>
 </section>
 
-<footer>
-    <p>&copy; 2025 GTPSY. All rights reserved.</p>
-</footer>
+  <section id="dashboard" class="form-container hidden">
+    <h2>Welcome, <span id="username">User</span></h2>
+    <p>This is your dashboard.</p>
 
+    <hr style="margin: 20px 0; border-color: rgba(255,255,255,0.2);" />
+
+    <div>
+      <p><strong>Owner GTPSY:</strong> Kizkazi</p>
+      <p><strong>Admin GTPSY:</strong> Clewel dan Reza</p>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <h3>Fitur yang tersedia:</h3>
+      <button disabled style="margin: 5px; opacity: 0.6;">Server Status</button>
+      <button disabled style="margin: 5px; opacity: 0.6;">Download GTPS</button>
+      <button disabled style="margin: 5px; opacity: 0.6;">Top Player</button>
+      <button disabled style="margin: 5px; opacity: 0.6;">Event Mingguan</button>
+      <p style="font-size: 12px; margin-top: 10px;">(Fitur coming soon)</p>
+    </div>
+  </section>
+
+  <script>
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const loginLink = document.getElementById('loginLink');
+    const registerLink = document.getElementById('registerLink');
+    const logoutLink = document.getElementById('logoutLink');
+    const dashboard = document.getElementById('dashboard');
+    const usernameSpan = document.getElementById('username');
+
+    loginLink.addEventListener('click', () => {
+      document.getElementById('login').classList.remove('hidden');
+      document.getElementById('register').classList.add('hidden');
+      dashboard.classList.add('hidden');
+    });
+
+    registerLink.addEventListener('click', () => {
+      document.getElementById('register').classList.remove('hidden');
+      document.getElementById('login').classList.add('hidden');
+      dashboard.classList.add('hidden');
+    });
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = loginForm.querySelector('input[type="email"]').value;
+      const password = loginForm.querySelector('input[type="password"]').value;
+
+      const user = users.find(user => user.email === email && user.password === password);
+      if (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        usernameSpan.textContent = user.username;
+        dashboard.classList.remove('hidden');
+        loginForm.reset();
+        document.getElementById('login').classList.add('hidden');
+        loginLink.classList.add('hidden');
+        registerLink.classList.add('hidden');
+        logoutLink.classList.remove('hidden');
+      } else {
+        alert('Email atau password salah!');
+      }
+    });
+
+    registerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('regEmail').value;
+      const username = document.getElementById('regUsername').value;
+      const password = document.getElementById('regPassword').value;
+      const confirmPassword = document.getElementById('regConfirmPassword').value;
+
+      if (password !== confirmPassword) {
+        alert('Password tidak cocok!');
+        return;
+      }
+
+      const existingUser = users.find(user => user.email === email);
+      if (existingUser) {
+        alert('Email sudah terdaftar.');
+        return;
+      }
+
+      const newUser = { email, username, password };
+      users.push(newUser);
+      localStorage.setItem('users', JSON.stringify(users));
+      alert('Registrasi berhasil. Silakan login.');
+
+      registerForm.reset();
+      document.getElementById('register').classList.add('hidden');
+      document.getElementById('login').classList.remove('hidden');
+    });
+
+// Tampilkan form Login saat klik menu Login
+loginLink.addEventListener('click', () => {
+    document.getElementById('login').classList.remove('hidden');
+    document.getElementById('register').classList.add('hidden');
+    dashboard.classList.add('hidden'); // Optional: sembunyikan dashboard juga
+});
+
+// Tampilkan form Register saat klik menu Register
+registerLink.addEventListener('click', () => {
+    document.getElementById('register').classList.remove('hidden');
+    document.getElementById('login').classList.add('hidden');
+    dashboard.classList.add('hidden'); // Optional
+});
+
+// Sembunyikan login, register & dashboard saat klik Home
+document.querySelector('a[href="#home"]').addEventListener('click', () => {
+    document.getElementById('login').classList.add('hidden');
+    document.getElementById('register').classList.add('hidden');
+    dashboard.classList.add('hidden');
+
+    });
+  </script>
 </body>
-        </html>
+    </html>
