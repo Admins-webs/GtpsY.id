@@ -218,21 +218,21 @@
       document.getElementById('login').classList.remove('hidden');
     });
 
-// Tampilkan form Login saat klik menu Login
+
 loginLink.addEventListener('click', () => {
     document.getElementById('login').classList.remove('hidden');
     document.getElementById('register').classList.add('hidden');
-    dashboard.classList.add('hidden'); // Optional: sembunyikan dashboard juga
+    dashboard.classList.add('hidden'); 
 });
 
-// Tampilkan form Register saat klik menu Register
+
 registerLink.addEventListener('click', () => {
     document.getElementById('register').classList.remove('hidden');
     document.getElementById('login').classList.add('hidden');
-    dashboard.classList.add('hidden'); // Optional
+    dashboard.classList.add('hidden'); 
 });
 
-// Sembunyikan login, register & dashboard saat klik Home
+
 document.querySelector('a[href="#home"]').addEventListener('click', () => {
     document.getElementById('login').classList.add('hidden');
     document.getElementById('register').classList.add('hidden');
