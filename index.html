@@ -70,10 +70,32 @@
       display: none;
       
     }
+    .shop-btn {
+  margin-top: 30px;
+  background: #ff9900;
+  color: white;
+  padding: 14px 30px;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(255,153,0,0.3);
+  transition: background 0.3s ease, transform 0.3s ease;
+  animation: fadeInUp 2s ease;
+}
+.shop-btn:hover {
+  background: #e67e00;
+  transform: scale(1.05);
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
   </style>
 </head>
 <body>
 
+  
   <nav class="navbar">
     <h1 class="logo">GTPSY</h1>
     <ul>
@@ -90,8 +112,10 @@
   <p>Fitur-fitur menarik, event rutin, item eksklusif, dan gameplay anti bosan!</p>
   <p>Owner: Kizkazi | Admin: Clewel & Reza</p>
   <a href="https://kua.lat/GtpsY" class="btn">Join GTPSY</a>
+  <a href="store.html" class="shop-btn">Shop GTPSY</a>
 </section>
 
+  
   <section id="login" class="form-container hidden">
     <h2>Login</h2>
     <form id="loginForm">
