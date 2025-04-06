@@ -6,106 +6,76 @@
   <title>Checkout - GTPSY Store</title>
   <style>
     body {
-      background: #1a1a1a;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #fff;
       margin: 0;
       padding: 20px;
     }
-
     h1 {
-      color: #ff9900;
       text-align: center;
-      margin-bottom: 20px;
+      color: #ff9900;
     }
-
-    .cart-item {
-      background: #2a2a2a;
+    .product {
+      background: #1e1e1e;
+      margin: 10px 0;
       padding: 15px;
       border-radius: 10px;
-      margin-bottom: 10px;
-      box-shadow: 0 0 10px rgba(255,153,0,0.3);
-      animation: slideIn 0.4s ease;
+      box-shadow: 0 0 5px rgba(255, 153, 0, 0.4);
     }
-
-    .cart-item h3 {
-      margin: 0 0 5px;
-    }
-
     .total {
-      font-size: 18px;
-      margin-top: 20px;
-      text-align: right;
+      font-size: 20px;
       font-weight: bold;
-      color: #ff9900;
+      margin-top: 20px;
+      color: #00ffcc;
     }
-
-    .wa-btn {
+    .btn-wa {
+      margin-top: 20px;
       display: block;
       background: #25d366;
       color: white;
       text-align: center;
-      padding: 15px;
-      margin-top: 30px;
+      padding: 12px;
       border-radius: 10px;
-      font-weight: bold;
       text-decoration: none;
-      font-size: 16px;
-      box-shadow: 0 0 10px rgba(37, 211, 102, 0.4);
-      transition: transform 0.3s ease;
+      font-weight: bold;
+      transition: background 0.3s ease;
     }
-
-    .wa-btn:hover {
-      transform: scale(1.05);
-    }
-
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .btn-wa:hover {
+      background: #1ebc5e;
     }
   </style>
 </head>
 <body>
-  <h1>Checkout GTPSY Store</h1>
-  <div id="cartContainer"></div>
-  <div class="total" id="totalPrice">Total: Rp0</div>
-  <a id="waCheckout" class="wa-btn" href="#" target="_blank">Checkout via WhatsApp</a>
+  <h1>Checkout Produk</h1>
+  <div id="checkoutItems"></div>
+  <div class="total" id="totalPrice"></div>
+  <a id="waCheckout" class="btn-wa" href="#" target="_blank">Kirim ke WhatsApp</a>
 
   <script>
     const cart = JSON.parse(localStorage.getItem("gtpsyCart")) || [];
-    const cartContainer = document.getElementById("cartContainer");
+    const checkoutItems = document.getElementById("checkoutItems");
     const totalPriceEl = document.getElementById("totalPrice");
     const waCheckout = document.getElementById("waCheckout");
 
     let total = 0;
-    let message = "Halo, saya ingin membeli produk berikut:%0A";
+    let message = "Halo Admin, saya ingin membeli produk berikut:%0A";
 
     cart.forEach(item => {
-      const itemDiv = document.createElement("div");
-      itemDiv.className = "cart-item";
-      itemDiv.innerHTML = `<h3>${item.name}</h3><p>Harga: ${item.price}</p>`;
-      cartContainer.appendChild(itemDiv);
+      const itemEl = document.createElement("div");
+      itemEl.className = "product";
+      itemEl.innerHTML = `<strong>${item.name}</strong><br>Harga: ${item.price}`;
+      checkoutItems.appendChild(itemEl);
 
-      const harga = parseInt(item.price.replace("Rp", ""));
-      total += harga;
-      message += `- ${item.name} (${item.price})%0A`;
+      const priceNumber = parseInt(item.price.replace(/[^\d]/g, ""));
+      total += priceNumber;
+
+      message += `%0A- ${item.name} (${item.price})`;
     });
 
-    message += `%0ATotal: Rp${total.toLocaleString("id-ID")}`;
-totalPriceEl.textContent = `Total: Rp${total.toLocaleString("id-ID")}`;
-waCheckout.href = `https://wa.me/6282298334109?text=${message}`;
-  <script>
-    // Proteksi agar gak bisa buka inspect, klik kanan, dll
-    document.addEventListener("contextmenu", e => e.preventDefault());
-    document.onkeydown = function(e) {
-      if(e.keyCode == 123 || 
-        (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) || 
-        (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) || 
-        (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) || 
-        (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
-          return false;
-      }
-    };
+    message += `%0A%0ATotal: Rp${total.toLocaleString("id-ID")}`;
+    totalPriceEl.textContent = `Total: Rp${total.toLocaleString("id-ID")}`;
+    waCheckout.href = `https://wa.me/6282298334109?text=${message}`;
   </script>
 </body>
 </html>
