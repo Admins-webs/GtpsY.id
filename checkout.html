@@ -91,11 +91,9 @@
       message += `- ${item.name} (${item.price})%0A`;
     });
 
-    message += `%0ATotal: Rp${total.toLocaleString()}`;
-    totalPriceEl.textContent = `Total: Rp${total.toLocaleString()}`;
-    waCheckout.href = `https://wa.me/6282298334109?text=${message}`;
-  </script>
-
+    message += `%0ATotal: Rp${total.toLocaleString("id-ID")}`;
+totalPriceEl.textContent = `Total: Rp${total.toLocaleString("id-ID")}`;
+waCheckout.href = `https://wa.me/6282298334109?text=${message}`;
   <script>
     // Proteksi agar gak bisa buka inspect, klik kanan, dll
     document.addEventListener("contextmenu", e => e.preventDefault());
