@@ -1,56 +1,63 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checkout - GTPSY Store</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       background: #121212;
-      color: #fff;
-      margin: 0;
+      color: white;
       padding: 20px;
     }
+
     h1 {
       text-align: center;
       color: #ff9900;
     }
+
     .product {
       background: #1e1e1e;
-      margin: 10px 0;
       padding: 15px;
       border-radius: 10px;
-      box-shadow: 0 0 5px rgba(255, 153, 0, 0.4);
+      margin: 10px 0;
+      box-shadow: 0 0 10px rgba(255, 153, 0, 0.3);
     }
+
     .total {
       font-size: 20px;
       font-weight: bold;
       margin-top: 20px;
       color: #00ffcc;
-    }
-    .btn-wa {
-      margin-top: 20px;
-      display: block;
-      background: #25d366;
-      color: white;
       text-align: center;
-      padding: 12px;
-      border-radius: 10px;
+    }
+
+    .btn-wa {
+      display: block;
+      background-color: #25d366;
+      color: white;
       text-decoration: none;
+      padding: 15px;
+      text-align: center;
+      border-radius: 10px;
+      margin-top: 20px;
+      font-size: 16px;
       font-weight: bold;
       transition: background 0.3s ease;
     }
+
     .btn-wa:hover {
-      background: #1ebc5e;
+      background-color: #1ebe5b;
     }
   </style>
 </head>
 <body>
-  <h1>Checkout Produk</h1>
+
+  <h1>Checkout Produk Anda</h1>
   <div id="checkoutItems"></div>
-  <div class="total" id="totalPrice"></div>
-  <a id="waCheckout" class="btn-wa" href="#" target="_blank">Kirim ke WhatsApp</a>
+  <div class="total" id="totalPrice">Total: Rp0</div>
+  <a id="waCheckout" class="btn-wa" href="#" target="_blank">Checkout via WhatsApp</a>
 
   <script>
     const cart = JSON.parse(localStorage.getItem("gtpsyCart")) || [];
@@ -59,23 +66,31 @@
     const waCheckout = document.getElementById("waCheckout");
 
     let total = 0;
-    let message = "Halo Admin, saya ingin membeli produk berikut:%0A";
+    let message = "Halo admin, saya ingin membeli produk berikut:%0A";
 
-    cart.forEach(item => {
-      const itemEl = document.createElement("div");
-      itemEl.className = "product";
-      itemEl.innerHTML = `<strong>${item.name}</strong><br>Harga: ${item.price}`;
-      checkoutItems.appendChild(itemEl);
+    if (cart.length === 0) {
+      checkoutItems.innerHTML = "<p>Tidak ada produk dalam keranjang.</p>";
+      waCheckout.style.display = "none";
+      totalPriceEl.textContent = "";
+    } else {
+      cart.forEach((item, index) => {
+        const itemDiv = document.createElement("div");
+        itemDiv.classList.add("product");
 
-      const priceNumber = parseInt(item.price.replace(/[^\d]/g, ""));
-      total += priceNumber;
+        itemDiv.innerHTML = `<strong>${item.name}</strong><br>Harga: ${item.price}`;
+        checkoutItems.appendChild(itemDiv);
 
-      message += `%0A- ${item.name} (${item.price})`;
-    });
+        const harga = parseInt(item.price.replace(/[^\d]/g, ""));
+        total += harga;
 
-    message += `%0A%0ATotal: Rp${total.toLocaleString("id-ID")}`;
-    totalPriceEl.textContent = `Total: Rp${total.toLocaleString("id-ID")}`;
-    waCheckout.href = `https://wa.me/6282298334109?text=${message}`;
+        message += `%0A${index + 1}. ${item.name} - ${item.price}`;
+      });
+
+      message += `%0A%0ATotal Harga: Rp${total.toLocaleString("id-ID")}`;
+      totalPriceEl.textContent = `Total: Rp${total.toLocaleString("id-ID")}`;
+      waCheckout.href = `https://wa.me/6282298334109?text=${message}`;
+    }
   </script>
+
 </body>
 </html>
